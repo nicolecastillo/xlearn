@@ -1,20 +1,21 @@
-FROM python:3.7-slim-buster AS base
+FROM python:3.7-slim-buster as base
 
-# Upgrade or install packages needed
-RUN apt-get update && apt-get -y install \
-    g++ \
-    cmake 
+RUN apt update && \
+    apt install -y cmake g++ && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Install xlearn and liblinear
-RUN pip install xlearn==0.40a1 liblinear==2.11.2
+COPY . /xlearn
 
+# build from source (installs to /usr/local/lib/python3.7/site-packages/)
+RUN cd /xlearn && \
+    ls -l && \
+    ./build.sh && \
+    rm -r /xlearn
+
+# install other library (installs to same site-packages path)
+RUN pip install --no-cache-dir liblinear==2.11.2
+
+# create an image without build dependencies
 FROM python:3.7-slim-buster AS lib
-COPY --from=base /usr/local/lib/python3.7/site-packages /usr/local/lib/python3.7/
-
 ENV USER=root
-
-# Install git and xlearn demo test
-RUN apt-get update && apt-get -y install git 
-RUN git clone https://github.com/aksnzhy/xlearn
-
-ENTRYPOINT ["/bin/bash"]
+COPY --from=base /usr/local/lib/python3.7/site-packages/* /usr/local/lib/python3.7/
