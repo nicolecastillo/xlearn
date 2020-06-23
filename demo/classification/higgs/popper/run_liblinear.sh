@@ -2,14 +2,13 @@
 set -ex
 
 cd ./liblinear/python
-make 
+
 # start timing
 start=$(date +%s)
 start_fmt=$(date +%Y-%m-%d\ %r)
 echo "STARTING TIMING RUN AT $start_fmt"
 
 # run benchmark
-
 echo "running benchmark"
 
 python3 run_higgs_liblinear.py 
