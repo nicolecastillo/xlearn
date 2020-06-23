@@ -33,10 +33,10 @@ steps:
 - id: run-benchmark
   uses: docker://xlearn
   skip_pull: true
-  runs: ['bash']
   dir: demo/classification/higgs/popper/
-  args: [run_benchmark.sh]
+  runs: [./run_benchmark.sh]
 
 - id: show-results
   uses: docker://jupyter/scipy-notebook:latest
-  runs: ['python3', './scripts/show_results.py']
+  dir: demo/classification/higgs/popper/
+  runs: ['./show_results.py']
