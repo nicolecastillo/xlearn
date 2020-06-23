@@ -1,4 +1,12 @@
 steps:
+- id: build-img
+  uses: docker://docker:19.03.10
+  args:
+  - build
+  -   --tag=xlearn
+  -   --file=demo/classification/higgs/popper/docker/Dockerfile
+  -   .
+
 - id: download-data
   uses: docker://byrnedo/alpine-curl:0.1.8
   runs: [sh]
