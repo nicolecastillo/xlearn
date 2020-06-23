@@ -1,14 +1,19 @@
 steps:
-#    - id: download dataset
-#      uses: docker://byrnedo/alpine-curl:0.1.8
-#      runs: [sh, ./scripts/download_dataset.sh]
+    - id: download dataset
+      uses: docker://byrnedo/alpine-curl:0.1.8
+      runs: [sh, ./scripts/download_dataset.sh]
+
+    - id: prepare data
+      uses: docker://xlearn
+      skip_pull: true
+      runs: ['sh', './scripts/prepare_data.sh']
       
     - id: run benchmark
       uses: docker://xlearn
       skip_pull: true
       runs: ['sh', './scripts/run_benchmark.sh']
       
-#    - id: show results
-#      uses: docker://jupyter/scipy-notebook:latest
-#      runs: ['python3', './scripts/show_results.py']
+    - id: show results
+      uses: docker://jupyter/scipy-notebook:latest
+      runs: ['python3', './scripts/show_results.py']
  
