@@ -1,6 +1,0 @@
-make
-HIGGS = csvread('HIGGS.csv'); % read a csv file
-labels = HIGGS(:, 1); % labels from the 1st column
-features = HIGGS(:, 2:end); 
-features_sparse = sparse(features); % features must be in a sparse matrix
-libsvmwrite('HIGGSlibsvm', labels, features_sparse);
