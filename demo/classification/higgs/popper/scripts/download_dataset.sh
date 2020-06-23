@@ -5,7 +5,9 @@ set -ex
 
 wget https://archive.ics.uci.edu/ml/machine-learning-databases/00280/HIGGS.csv.gz
 
+if [ ! -f HIGGS.csv ]; then
 if [ -f HIGGS.csv.gz ]; then
 gunzip HIGGS.csv.gz
+fi
 fi
 
