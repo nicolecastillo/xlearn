@@ -3,11 +3,9 @@ import numpy as np
 import pandas as pd
 import xlearn as xl
 from sklearn.model_selection import train_test_split
-#from sklearn.datasets import load_svmlight_file
 
 # Load dataset
-#X, y = load_svmlight_file("higgs-svm")
-higgs = pd.read_csv("higgs.csv", header=None, sep=",")
+higgs = pd.read_csv("HIGGS.csv", header=None, sep=",")
 
 X = higgs[higgs.columns[1:]]
 y = higgs[0]
