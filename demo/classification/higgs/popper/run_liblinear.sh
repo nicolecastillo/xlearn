@@ -1,7 +1,5 @@
-#!/bin/bash
+#!/bin/sh
 set -ex
-
-cd ./liblinear/python
 
 # start timing
 start=$(date +%s)
@@ -9,6 +7,7 @@ start_fmt=$(date +%Y-%m-%d\ %r)
 echo "STARTING TIMING RUN AT $start_fmt"
 
 # run benchmark
+
 echo "running benchmark"
 
 python3 run_higgs_liblinear.py 
@@ -23,5 +22,3 @@ result=$(( $end - $start ))
 result_name="liblinear"
 
 echo "RESULT,$result_name,$result,$USER,$start_fmt"
-
-cd ../../
