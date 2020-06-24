@@ -5,7 +5,7 @@ steps:
   args:
   - build
   -   --tag=xlearn
-  -   --file=demo/classification/higgs/popper/Dockerfile
+  -   --file=Dockerfile
   -   .
 
 - id: download-data
@@ -24,20 +24,19 @@ steps:
     fi
 
 - id: prepare-data
-  uses: docker://xlearn
-  # TODO - create an image for csv2libsvm
-  # uses: docker://getpopper/csv2libsvm:ef2a6d4
-  skip_pull: true
-  runs: [csv2libsvm]
-  args: 'demo/classification/higgs/popper/HIGGS.csv'
+  uses: docker://python:3.7
+  runs: [python3]
+  args: ['csv2libsvm.py','higgs.csv','libsvm.data','0','False']
+
 
 - id: run-benchmark
   uses: docker://xlearn
   skip_pull: true
-  dir: demo/classification/higgs/popper/
-  runs: [./run_benchmark.sh]
+  runs: [sh]
+  args: [run_benchmark.sh]
 
 - id: show-results
   uses: docker://jupyter/scipy-notebook:latest
-  dir: demo/classification/higgs/popper/
-  runs: ['./show_results.py']
+  runs: [python3]
+  args: [show_results.py] 
+
