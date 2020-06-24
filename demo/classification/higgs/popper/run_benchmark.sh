@@ -19,9 +19,9 @@ echo time,library >> $report_file
 counter=1
 while [ $counter -le 5 ]
 do
-./run_xlearn.sh
+. ./run_xlearn.sh
 echo $result,xlearn >> $report_file
-./run_liblinear.sh
+. ./run_liblinear.sh
 echo $result,liblinear >> $report_file
 counter=$(( counter+1 ))
 done
