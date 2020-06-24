@@ -11,7 +11,7 @@ X = higgs[higgs.columns[1:]]
 y = higgs[0]
 
 # Split train and test set 
-x_train,x_test,y_train,y_test=train_test_split(X,y,test_size=220000)
+x_train,x_test,y_train,y_test=train_test_split(X,y,test_size=0.2)
 
 # DMatrix transition
 xdm_train = xl.DMatrix(x_train, y_train)
