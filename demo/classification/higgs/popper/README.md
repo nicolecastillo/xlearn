@@ -14,7 +14,7 @@ git clone https://github.com/aksnzhy/xlearn.git
 
 3. Install the `popper` tool.
 ```
-pip install popper
+curl -sSfL https://raw.githubusercontent.com/getpopper/popper/master/install.sh | sh
 ```
 We recommend to use a [virtualenv](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/#creating-a-virtual-environment) for installing Popper.
 
