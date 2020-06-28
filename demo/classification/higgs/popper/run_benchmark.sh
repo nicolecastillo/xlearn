@@ -2,8 +2,8 @@
 set -ex
 
 timestamp=$(date "+%Y%m%d-%H%M%S")
-results_dir="results"
-report_file="results/report.csv"
+results_dir="results/$timestamp"
+report_file="results/$timestamp/report.csv"
 
 if [ -f $report_file ]; then
 rm $report_file
