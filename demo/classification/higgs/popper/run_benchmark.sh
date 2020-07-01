@@ -12,6 +12,7 @@ fi
 # Generate the output directory
 if [ ! -d $results_dir ]; then
 mkdir -p ./$results_dir
+chmod -R 777 ./$results_dir
 fi
 
 echo time,library >> $report_file
