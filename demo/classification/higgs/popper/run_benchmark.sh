@@ -6,7 +6,7 @@ results_dir="results/$timestamp"
 report_file="results/$timestamp/report.csv"
 
 if [ -f $report_file ]; then
-rm $report_file
+rm -f $report_file
 fi
 
 # Generate the output directory
