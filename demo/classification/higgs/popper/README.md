@@ -18,6 +18,6 @@ curl -sSfL https://raw.githubusercontent.com/getpopper/popper/master/install.sh 
 ```
 4. Run the workflow.
 ```
-cd xlearn/demo/classification/higgs/popper
-popper run -f wf.yml 
+cd xlearn/
+popper run -f demo/classification/higgs/popper/wf.yml
 ```
