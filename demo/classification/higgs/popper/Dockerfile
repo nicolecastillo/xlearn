@@ -15,5 +15,8 @@ RUN git clone https://github.com/cjlin1/liblinear /opt/liblinear && \
 ENV PYTHONPATH=/opt/liblinear/python
 
 # install xlearn from source
-RUN git clone https://github.com/aksnzhy/xlearn.git 
-RUN cd xlearn && ./build.sh
+COPY . /xlearn
+RUN cd /xlearn && \
+    ls -l && \
+    ./build.sh && \
+    rm -r /xlearn
