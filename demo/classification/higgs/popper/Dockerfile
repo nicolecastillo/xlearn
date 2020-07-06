@@ -11,7 +11,8 @@ RUN apt update && \
 # install liblinear from source
 RUN git clone https://github.com/cjlin1/liblinear /opt/liblinear && \
     cd /opt/liblinear/python && \
-    make -j16
+    git checkout f41e72c && \
+    make -j4
 ENV PYTHONPATH=/opt/liblinear/python
 
 # install xlearn from source
